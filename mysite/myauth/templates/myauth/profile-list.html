@@ -1,0 +1,25 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Profile list
+{% endblock %}
+
+{% block body %}
+    <h1>Profiles:</h1>
+    {% if profiles %}
+        <div>
+        {% for profile in profiles %}
+            <div>
+                {% if profile.avatar %}
+                    <img src="{{ profile.avatar.url }}" alt="{{ profile.user.username }}">
+                {% else %}
+                    <p>no avatar</p>
+                {% endif %}
+                <p><a href="{% url 'myauth:profile_detail' pk=profile.pk %}">{{ profile.user.username }}</a></p>
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <h3>No profiles yet</h3>
+    {% endif %}
+{% endblock %}
