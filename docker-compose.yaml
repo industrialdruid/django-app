@@ -5,12 +5,12 @@ services:
     build:
       dockerfile: ./Dockerfile
     command:
-      - gunicorn
-      - mysite.wsgi:application
-      - --bind
+      - "gunicorn"
+      - "mysite.wsgi:application"
+      - "--bind"
       - "0.0.0.0:8000"
     ports:
-      - "8000:8080"
+      - "8000:8000"
     restart: always
     env_file:
       - .env
